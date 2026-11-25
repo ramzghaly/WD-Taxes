@@ -133,7 +133,7 @@ body.locked .top .co,body.locked main{visibility:hidden}
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
 import { initializeFirestore, doc, collection, getDoc, getDocs, setDoc, deleteDoc, addDoc, onSnapshot, query, limit, orderBy } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, setPersistence, browserSessionPersistence } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
-const CFG=/*FIREBASE_CONFIG*/{apiKey:"",authDomain:"",projectId:"",storageBucket:"",messagingSenderId:"",appId:""};
+const CFG={apiKey:"AIzaSyDuNwyWK67o9vp4hh7eGUh2t2Io1oeDeZA",authDomain:"wd-taxes.firebaseapp.com",projectId:"wd-taxes",storageBucket:"wd-taxes.firebasestorage.app",messagingSenderId:"223468401362",appId:"1:223468401362:web:a6947dddea42d73422b30b"};
 async function detectDb(){for(const id of ["(default)","default"]){try{const r=await fetch("https://firestore.googleapis.com/v1/projects/"+CFG.projectId+"/databases/"+id+"/documents/sec?pageSize=1&key="+CFG.apiKey);if(r.status!==404)return id}catch(e){}}return "(default)"}
 try{
   if(!CFG.projectId)throw new Error("لسه مفيش إعدادات Firebase في الملف");
