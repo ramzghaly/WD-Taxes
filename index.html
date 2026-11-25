@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<link rel="manifest" href="manifest.webmanifest">
+<link rel="manifest" href="/WD-Taxes/manifest.webmanifest">
 <meta name="theme-color" content="#151312">
 <link rel="icon" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="الضرائب">
+<meta name="application-name" content="الضرائب">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>الضرائب</title>
@@ -448,7 +450,7 @@ async function instClick(){if(installEvt){installEvt.prompt();try{const c=await 
   toast(/iphone|ipad/i.test(navigator.userAgent)?'من Safari: دوس زرار المشاركة ← Add to Home Screen':'من قايمة المتصفح اختار Install app / تثبيت التطبيق')}
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installEvt=e;$('#instBtn').hidden=$('#gInst').hidden=false});
 if(!matchMedia('(display-mode: standalone)').matches&&/iphone|ipad/i.test(navigator.userAgent)){$('#instBtn').hidden=$('#gInst').hidden=false}
-if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('/WD-Taxes/sw.js',{scope:'/WD-Taxes/'}).catch(()=>{}));
 $('#instBtn').onclick=instClick;$('#gInst').onclick=instClick;
 
 function go(v){if(me&&v!=='home'&&!(v==='sec'?anySec():can(v,'view'))){toast('مالكش صلاحية على الشاشة دي');return}view=v;['home','reg','pay','rep','sec'].forEach(k=>$('#v-'+k).hidden=k!==v);try{history.replaceState(null,'',v==='home'?location.pathname:'#'+v)}catch(e){}render()}

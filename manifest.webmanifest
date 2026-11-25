@@ -1,19 +1,34 @@
 {
-  "name": "الضرائب",
+  "name": "الضرائب — WD Taxes",
   "short_name": "الضرائب",
   "description": "متابعة الضرائب وسداداتها",
   "lang": "ar",
   "dir": "rtl",
-  "start_url": "./",
-  "scope": "./",
-  "id": "./",
+  "start_url": "/WD-Taxes/?app=wd-taxes",
+  "scope": "/WD-Taxes/",
+  "id": "/WD-Taxes/?app=wd-taxes",
   "display": "standalone",
   "orientation": "any",
   "background_color": "#e7e4df",
   "theme_color": "#151312",
   "icons": [
-    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "/WD-Taxes/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/WD-Taxes/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/WD-Taxes/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ]
 }
