@@ -1,0 +1,33 @@
+rules_version = '2';
+// قواعد أمان سيستم الضرائب
+// - مفيش حد يقرا أو يكتب أي بيانات غير المستخدمين المفعّلين في السيستم.
+// - سجل الحركات: إضافة بس، محدش يقدر يعدّل أو يمسح منه.
+// - قائمة المستخدمين: المالك بس اللي يغيّر مين مفعّل.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function usersDoc() { return get(/databases/$(database)/documents/sec/users).data; }
+    function member() { return request.auth != null && request.auth.token.email in usersDoc().ok; }
+    function owner() { return request.auth != null && request.auth.token.email == usersDoc().owner; }
+
+    match /sec/users {
+      allow read: if true;
+      allow create: if request.auth != null
+        && request.resource.data.owner == request.auth.token.email
+        && request.auth.token.email in request.resource.data.ok;
+      allow update: if owner()
+        || (member() && request.resource.data.owner == resource.data.owner
+                     && request.resource.data.ok == resource.data.ok);
+      allow delete: if false;
+    }
+
+    match /log/{id} {
+      allow read, create: if member();
+      allow update, delete: if false;
+    }
+
+    match /{coll}/{id} {
+      allow read, write: if member()
+        && coll in ['liabilities', 'payments', 'settings', 'backups', 'files', 'fchunks'];
+    }
+  }
+}
